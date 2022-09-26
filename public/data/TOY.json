@@ -1,0 +1,44 @@
+[
+  {
+    "SKU": "TOY000100",
+    "Description": "Duck family of 3",
+    "Manufacturer": "Tomy",
+    "Condition": "C",
+    "Notes": "The ducks sing quack as the walk"
+  },
+  {
+    "SKU": "TOY000101",
+    "Description": "RC Firetruck & Dalmation",
+    "Manufacturer": "Spin Master LTD.",
+    "Condition": "B",
+    "Notes": "Model # 76200RX"
+  },
+  {
+    "SKU": "TOY000102",
+    "Description": "Wooden T-Rex",
+    "Manufacturer": "George Serrett",
+    "Condition": "A",
+    "Notes": "Handmade, arms, feet, & mouth move when pushed"
+  },
+  {
+    "SKU": "TOY000103",
+    "Description": "Wooden Phone",
+    "Manufacturer": "Grimms",
+    "Condition": "C",
+    "Notes": "Spiel und Holz Design Made in Germany No. 11330"
+  },
+  {
+    "SKU": "TOY000104",
+    "Description": "RC Car",
+    "Manufacturer": "Zebra A/S",
+    "Condition": "B",
+    "Notes": "Small black car Model no. 3011760"
+  },
+  {
+    "SKU": "TOY000105",
+    "Description": "Legos",
+    "Manufacturer": "Lego",
+    "Condition": "C",
+    "Notes": "Assortment of Legos"
+  }
+]

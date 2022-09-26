@@ -1,0 +1,44 @@
+[
+  {
+    "SKU": "ECK000100",
+    "Description": "Keyboard wired",
+    "Manufacturer": "Dell",
+    "Condition": "C",
+    "Notes": "Missing F1 key"
+  },
+  {
+    "SKU": "ECK000101",
+    "Description": "Keyboard bluetooth",
+    "Manufacturer": "Apple",
+    "Condition": "C",
+    "Notes": "Battery powered and missing battery cap screw"
+  },
+  {
+    "SKU": "ECK000102",
+    "Description": "Keyboard wired",
+    "Manufacturer": "Hypergear",
+    "Condition": "D",
+    "Notes": "Missing USB cable and and LED’s"
+  },
+  {
+    "SKU": "ECK000103",
+    "Description": "Keyboard wired",
+    "Manufacturer": "Razer",
+    "Condition": "F",
+    "Notes": "Blackwidow X ultimate missing cable and some switches"
+  },
+  {
+    "SKU": "ECK000104",
+    "Description": "Keyboard wired",
+    "Manufacturer": "Dell",
+    "Condition": "F",
+    "Notes": "Broken in half"
+  },
+  {
+    "SKU": "ECK000105",
+    "Description": "Keyboard bluetooth",
+    "Manufacturer": "Apple",
+    "Condition": "B",
+    "Notes": "Battery powered "
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "SKU": "CSP000100",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Butterick",
+    "Condition": "C",
+    "Notes": "Pattern #6083 Swimsuits"
+  },
+  {
+    "SKU": "CSP000101",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "C",
+    "Notes": "Pattern #9858 Swimsuits"
+  },
+  {
+    "SKU": "CSP000102",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "B",
+    "Notes": "Pattern #1266 Coats"
+  },
+  {
+    "SKU": "CSP000103",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "C",
+    "Notes": "Pattern #1299 Montana Outfit"
+  },
+  {
+    "SKU": "CSP000104",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "B",
+    "Notes": "Pattern V2886 Guy Laroche Outfit"
+  },
+  {
+    "SKU": "CSP000105",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "C",
+    "Notes": "Pattern #1277 Yves Saint Laurent Dress"
+  },
+  {
+    "SKU": "CSP000106",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "C",
+    "Notes": "Pattern #2472 Coats"
+  },
+  {
+    "SKU": "CSP000107",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "Vogue",
+    "Condition": "B",
+    "Notes": "Pattern #1583 Vera Wang Wedding Dress"
+  },
+  {
+    "SKU": "CSP000108",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "미호",
+    "Condition": "A",
+    "Notes": "Dog Pattern Book (1) and Patterns (2)"
+  },
+  {
+    "SKU": "CSP000109",
+    "Description": "Sewing Pattern",
+    "Manufacturer": "미호",
+    "Condition": "B",
+    "Notes": "Kids Clothing Pattern Book"
+  }
+]

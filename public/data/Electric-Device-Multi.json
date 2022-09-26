@@ -1,0 +1,16 @@
+[
+ {
+   "SKU": "EDM000100",
+   "Description": "Portable TV/Radio/etc",
+   "Manufacturer": "Unknown",
+   "Condition": "C",
+   "Notes": "Battery powered tv, radio, light, lantern, compass, siren, thermometer"
+ },
+ {
+   "SKU": "EDM000101",
+   "Description": "Portable DVD player",
+   "Manufacturer": "RCA",
+   "Condition": "B",
+   "Notes": "Model # DRC99390"
+ }
+]

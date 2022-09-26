@@ -1,0 +1,14 @@
+.flexContainer {
+  display: flex;
+  gap: 2.083vw 4.688vw;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-left: 9.131vw;
+}
+
+.section {
+  margin-left: 9.131vw;
+  font-size: 1.458vw;
+  margin-bottom: 2.083vw;
+  margin-top: 4.115vw;
+}
