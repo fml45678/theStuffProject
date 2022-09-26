@@ -14,7 +14,17 @@ import phonesData from "../../public/data/Electric-Device-Phones.json";
 import screensData from "../../public/data/Electric-Device-Screens.json";
 import keyboardsData from "../../public/data/Electric-Computer-Keyboards.json";
 
-const titleAndCodes = [
+const titleAndCodes: {
+  title: string;
+  code: string;
+  file: {
+    SKU: string;
+    Description: string;
+    Manufacturer: string;
+    Condition: string;
+    Notes: string;
+  }[];
+}[] = [
   { title: "CRAFT", code: "CSP", file: patternData },
   { title: "TOY", code: "TOY", file: toyData },
   { title: "SPEAKERS", code: "EAS", file: speakersData },

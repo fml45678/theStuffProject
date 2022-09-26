@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ItemThumbnail.module.css";
 
-function ItemThumbnail(props) {
+function ItemThumbnail(props: { cat: string; img: string }) {
   return (
     <div className={styles.itemContainer}>
       <img

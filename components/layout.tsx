@@ -1,7 +1,7 @@
 import styles from "./layout.module.css";
 import Link from "next/link";
 
-const titleAndCodess = [
+const titleAndCodess: [{ title: string; code: string }] = [
   { title: "CRAFT", code: "CSP" },
   { title: "TOY", code: "TOY" },
   { title: "SPEAKERS", code: "EAS" },
