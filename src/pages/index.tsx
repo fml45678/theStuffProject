@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 import { trpc } from "../utils/trpc";
 import styles from "../styles/Home.module.css";
 import Layout from "../../components/layout";
@@ -35,8 +35,22 @@ const titleAndCodes: {
 ];
 
 const Home: NextPage = () => {
-  // const { data } = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
+  const { data } = trpc.useQuery(["example.hello", { text: "Awesome User!" }]);
 
+  const Posts = () => {
+    const postsQuery = trpc.useQuery(["post.all"]);
+    console.log(postsQuery.data);
+
+    return (
+      <div>
+        {postsQuery.data ? (
+          <p>{JSON.stringify(postsQuery.data[0]?.title)}</p>
+        ) : (
+          <p>Loading</p>
+        )}
+      </div>
+    );
+  };
   // use this to make dynamic sessions based on if the user is logged in or not.
   // const { data: session } = useSession();
 
@@ -61,6 +75,8 @@ const Home: NextPage = () => {
           <meta name="description" content="A place for all of our stuff!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
+        <Posts />
+        <div>{data?.yes}</div>
         <div>{section}</div>
 
         {/* <div>
