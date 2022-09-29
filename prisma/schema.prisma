@@ -27,6 +27,7 @@ model Items {
     notes           String
     sale            Boolean
     value           Int
+    sold            Boolean
 }
 
 model Post {
