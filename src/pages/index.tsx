@@ -1,8 +1,7 @@
 import type { NextPage } from "next";
 import { useSession } from "next-auth/react";
-import Head from "next/head";
-// import Link from "next/link";
 import { trpc } from "../utils/trpc";
+import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "../../components/layout";
 import ItemThumbnail from "../../components/ItemThumbnail";
@@ -16,7 +15,6 @@ import keyboardsData from "../../public/data/Electric-Computer-Keyboards.json";
 
 const titleAndCodes: {
   title: string;
-  code: string;
   file: {
     SKU: string;
     Description: string;
@@ -25,32 +23,17 @@ const titleAndCodes: {
     Notes: string;
   }[];
 }[] = [
-  { title: "CRAFT", code: "CSP", file: patternData },
-  { title: "TOY", code: "TOY", file: toyData },
-  { title: "SPEAKERS", code: "EAS", file: speakersData },
-  { title: "MULTI", code: "EDM", file: multiData },
-  { title: "PHONES", code: "EDP", file: phonesData },
-  { title: "SCREENS", code: "EDS", file: screensData },
-  { title: "KEYBOARDS", code: "ECK", file: keyboardsData },
+  { title: "CRAFT", file: patternData },
+  { title: "TOY", file: toyData },
+  { title: "SPEAKERS", file: speakersData },
+  { title: "MULTI", file: multiData },
+  { title: "PHONES", file: phonesData },
+  { title: "SCREENS", file: screensData },
+  { title: "KEYBOARDS", file: keyboardsData },
 ];
 
 const Home: NextPage = () => {
   // const { data } = trpc.useQuery(["example.hello", { text: "Awesome User!" }]);
-
-  const Thing = () => {
-    const thingQuery = trpc.useQuery(["thing.all"]);
-    console.log(thingQuery.data);
-
-    return (
-      <div>
-        {thingQuery.data ? (
-          <p>{JSON.stringify(thingQuery.data[0]?.sku)}</p>
-        ) : (
-          <p>Loading</p>
-        )}
-      </div>
-    );
-  };
 
   // use this to make dynamic sessions based on if the user is logged in or not.
   // const { data: session } = useSession();
@@ -62,7 +45,7 @@ const Home: NextPage = () => {
       </h1>
       <div key={key} className={styles.flexContainer}>
         {title.file.map((data) => (
-          <ItemThumbnail cat={title.code} key={data.SKU} img={data.SKU} />
+          <ItemThumbnail cat={data.SKU} key={data.SKU} img={data.SKU} />
         ))}
       </div>
     </div>
@@ -76,8 +59,7 @@ const Home: NextPage = () => {
           <meta name="description" content="A place for all of our stuff!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Thing />
-        {/* <div>{data?.yes}</div> */}
+
         <div>{section}</div>
 
         {/* <div>

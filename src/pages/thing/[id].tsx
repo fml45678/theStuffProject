@@ -23,9 +23,8 @@ export default function ThingPage() {
             <h1>{data.description}</h1>
 
             <img
-              className={styles.img}
-              src={`/images/CSP/${data.id}.JPG`}
-              alt="stuff"
+              src={`/images/${data.id.slice(0, 3)}/${data.id}.JPG`}
+              alt={data.description}
             />
             <span>{data.manufacturer}</span>
             <p>{data.notes}</p>

@@ -8,7 +8,7 @@ function ItemThumbnail(props: { cat: string; img: string }) {
       <Link href={`/thing/${props.img}`}>
         <img
           className={styles.img}
-          src={`/images/${props.cat}/${props.img}.JPG`}
+          src={`/images/${props.cat.slice(0, 3)}/${props.img}.JPG`}
           alt="stuff"
         />
       </Link>
