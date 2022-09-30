@@ -5,6 +5,12 @@
 }
 
 .img {
-    width: 16.667vw;
-    height: 9.375vw;
+  width: 16.667vw;
+  height: 9.375vw;
+}
+
+.highlightContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

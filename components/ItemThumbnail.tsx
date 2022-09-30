@@ -1,14 +1,17 @@
 import React from "react";
 import styles from "./ItemThumbnail.module.css";
+import Link from "next/link";
 
 function ItemThumbnail(props: { cat: string; img: string }) {
   return (
     <div className={styles.itemContainer}>
-      <img
-        className={styles.img}
-        src={`/images/${props.cat}/${props.img}.JPG`}
-        alt="stuff"
-      />
+      <Link href={`/thing/${props.img}`}>
+        <img
+          className={styles.img}
+          src={`/images/${props.cat}/${props.img}.JPG`}
+          alt="stuff"
+        />
+      </Link>
     </div>
   );
 }

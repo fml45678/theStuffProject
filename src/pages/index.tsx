@@ -35,22 +35,23 @@ const titleAndCodes: {
 ];
 
 const Home: NextPage = () => {
-  const { data } = trpc.useQuery(["example.hello", { text: "Awesome User!" }]);
+  // const { data } = trpc.useQuery(["example.hello", { text: "Awesome User!" }]);
 
-  const Posts = () => {
-    const postsQuery = trpc.useQuery(["post.all"]);
-    console.log(postsQuery.data);
+  const Thing = () => {
+    const thingQuery = trpc.useQuery(["thing.all"]);
+    console.log(thingQuery.data);
 
     return (
       <div>
-        {postsQuery.data ? (
-          <p>{JSON.stringify(postsQuery.data[0]?.title)}</p>
+        {thingQuery.data ? (
+          <p>{JSON.stringify(thingQuery.data[0]?.sku)}</p>
         ) : (
           <p>Loading</p>
         )}
       </div>
     );
   };
+
   // use this to make dynamic sessions based on if the user is logged in or not.
   // const { data: session } = useSession();
 
@@ -75,8 +76,8 @@ const Home: NextPage = () => {
           <meta name="description" content="A place for all of our stuff!" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <Posts />
-        <div>{data?.yes}</div>
+        <Thing />
+        {/* <div>{data?.yes}</div> */}
         <div>{section}</div>
 
         {/* <div>

@@ -20,7 +20,7 @@ model Example {
 }
 
 model Items {
-    sku             String @id
+    id             String @id
     description     String
     manufacturer    String
     condition       String
