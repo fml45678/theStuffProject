@@ -3,25 +3,25 @@ import { TRPCError } from "@trpc/server";
 import { createRouter } from "./context";
 import { z } from "zod";
 
-export const thingRouter = createRouter()
+export const catRouter = createRouter()
   .query("all", {
     async resolve() {
-      return prisma.items.findMany();
+      return prisma.categories.findMany();
     },
   })
   .query("byId", {
     input: z.object({ id: z.string() }),
     async resolve({ input }) {
       const { id } = input;
-      const thing = await prisma.items.findUnique({
+      const cat = await prisma.categories.findUnique({
         where: { id },
       });
-      if (!thing) {
+      if (!cat) {
         throw new TRPCError({
           code: "NOT_FOUND",
-          message: `No thing with id '${id}'`,
+          message: `No cat with id '${id}'`,
         });
       }
-      return thing;
+      return cat;
     },
   });

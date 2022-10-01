@@ -1,5 +1,8 @@
 import styles from "./layout.module.css";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { trpc } from "../src/utils/trpc";
+import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
 
 const titleAndCodess: [{ title: string; code: string }] = [
   { title: "CRAFT", code: "CSP" },
@@ -11,7 +14,22 @@ const titleAndCodess: [{ title: string; code: string }] = [
   { title: "KEYBOARDS", code: "ECK" },
 ];
 
+const Cats = () => {
+  const catsQuery = trpc.useQuery(["cat.all"]);
+  const { data } = catsQuery;
+
+  return (
+    <DefaultQueryCell
+      query={catsQuery}
+      success={({ data }) => <div>{<p>{JSON.stringify(data)}</p>}</div>}
+    />
+  );
+};
+
 export default function Layout({ children }) {
+  // const id = useRouter().query.id as string;
+  // const catQuery = trpc.useQuery(["cat.byId", { id }]);
+
   return (
     <div>
       <header className={styles.flexHeader}>
@@ -19,17 +37,22 @@ export default function Layout({ children }) {
           LEMIEUX STUDIOS <br /> INVENTORY
         </span>
 
+        {/* <DefaultQueryCell
+          query={catQuery}
+          success={({ data }) => <h1>{data.id}</h1>}
+        /> */}
+
         <ul className={styles.categories}>
           <li className={styles.dropDown}>
             ELECTRONICS
             <div>
               <ul className={styles.subMenu}>
-                <Link href={`/categories/${titleAndCodess[0].title}`}>
-                  <li>Audio</li>
-                </Link>
-                <Link href={`/categories/${titleAndCodess[1].title}`}>
-                  <li>Devices</li>
-                </Link>
+                {/* <Link href={`/categories/${titleAndCodess[0].title}`}> */}
+                <li>Audio</li>
+                {/* </Link> */}
+                {/* <Link href={`/categories/${titleAndCodess[1].title}`}> */}
+                <li>Devices</li>
+                {/* </Link> */}
                 <li>Computer</li>
               </ul>
             </div>
@@ -62,6 +85,7 @@ export default function Layout({ children }) {
           </li>
         </ul>
       </header>
+      <Cats />
       <div className={styles.searchContainer}>
         <input className={styles.searchBar} placeholder="SEARCH" type="text" />
       </div>
