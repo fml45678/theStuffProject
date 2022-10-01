@@ -38,6 +38,14 @@ model Post {
     createdAt         DateTime @default(now())
 }
 
+model Categories {
+    id                String @id @default(cuid())
+    cat               String
+    subCat            String
+    subSubCat         String
+    subSubSubCat      String
+}
+
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())
