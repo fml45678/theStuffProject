@@ -24,4 +24,9 @@ export const catRouter = createRouter()
       }
       return cat;
     },
-  });
+  })
+  .query("byCat", {
+    async resolve() {
+      return prisma.categories.findMany({ select: { cat: true } })
+    }
+  })

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
+import { array } from "zod";
 
 const titleAndCodess: [{ title: string; code: string }] = [
   { title: "CRAFT", code: "CSP" },
@@ -14,15 +15,37 @@ const titleAndCodess: [{ title: string; code: string }] = [
   { title: "KEYBOARDS", code: "ECK" },
 ];
 
+// const Categories = trpc.useQuery(["cat.byCat"]).data?.map((sec) => (
+//   <div>
+//     <span>{sec.cat}</span>
+//   </div>
+// ));
+function getCat(sec) {
+  return [sec.cat];
+}
+
 const Cats = () => {
-  const catsQuery = trpc.useQuery(["cat.all"]);
+  const catsQuery = trpc.useQuery(["cat.byCat"]);
   const { data } = catsQuery;
+  const Categees = data?.map(JSON.stringify);
+  const noDuplicates = new Set(Categees);
+  console.log(noDuplicates);
+  const theOne = noDuplicates.forEach
+  // const mapped = noDuplicates.map(getCat);
+
+  //   (sec, key) => (
+  //   <div key={key}>
+  //     <span>{sec.cat}</span>
+  //   </div>
+  // ));
 
   return (
-    <DefaultQueryCell
-      query={catsQuery}
-      success={({ data }) => <div>{<p>{JSON.stringify(data)}</p>}</div>}
-    />
+    // <p>{JSON.stringify(data)}</p>
+    <span>{noDuplicates}</span>
+    // <DefaultQueryCell
+    //   query={catsQuery}
+    //   success={({ data }) => <div>{<p>{JSON.stringify(data)}</p>}</div>}
+    // />
   );
 };
 
