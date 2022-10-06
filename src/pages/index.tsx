@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import { useSession } from "next-auth/react";
-import { trpc } from "../utils/trpc";
+// import { useSession } from "next-auth/react";
+// import { trpc } from "../utils/trpc";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "../../components/layout";

@@ -23,7 +23,7 @@ const AddItem: NextPage = () => {
       type: file.type,
     });
 
-    console.log(data);
+    // console.log(data);
 
     const url = data.url;
     let { data: newData } = await axios.put(url, file, {
@@ -51,12 +51,7 @@ const AddItem: NextPage = () => {
         {file && (
           <>
             <p>Selected file: {file.name}</p>
-            <button
-              onClick={uploadFile}
-              className=" bg-purple-500 text-white p-2 rounded-sm shadow-md hover:bg-purple-700 transition-all"
-            >
-              Upload a File!
-            </button>
+            <button onClick={uploadFile}>Upload a File!</button>
           </>
         )}
         {uploadingStatus && <p>{uploadingStatus}</p>}
