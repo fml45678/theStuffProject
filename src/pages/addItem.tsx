@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./addItem.module.css";
@@ -60,6 +61,9 @@ const AddItem: NextPage = () => {
         )}
         {uploadingStatus && <p>{uploadingStatus}</p>}
         {uploadedFile && <img className={styles.image} src={uploadedFile} />}
+        <Link href="/">
+          <button>HOME</button>
+        </Link>
       </div>
     </>
   );

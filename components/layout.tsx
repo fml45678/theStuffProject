@@ -1,5 +1,5 @@
 import styles from "./layout.module.css";
-// import Link from "next/link";
+import Link from "next/link";
 // import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
@@ -43,6 +43,9 @@ export default function Layout({ children }) {
       </header>
       <div className={styles.searchContainer}>
         <input className={styles.searchBar} placeholder="SEARCH" type="text" />
+        <Link href="addItem">
+          <button>Add an Item</button>
+        </Link>
       </div>
       <div className={styles.container}>{children}</div>
     </div>
