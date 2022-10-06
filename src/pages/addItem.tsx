@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
+import styles from "./addItem.module.css";
 
 const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
 
@@ -37,7 +38,7 @@ const AddItem: NextPage = () => {
 
   return (
     <>
-      <div>
+      <div className={styles.container}>
         <Head>
           <title>Add an item to The Stuff Project</title>
           <meta name="description" content="This is where you add your item!" />
@@ -58,7 +59,7 @@ const AddItem: NextPage = () => {
           </>
         )}
         {uploadingStatus && <p>{uploadingStatus}</p>}
-        {uploadedFile && <img src={uploadedFile} />}
+        {uploadedFile && <img className={styles.image} src={uploadedFile} />}
       </div>
     </>
   );
