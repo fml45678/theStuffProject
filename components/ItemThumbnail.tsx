@@ -5,7 +5,7 @@ import Link from "next/link";
 const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
 
 function ItemThumbnail(props: { cat: string; img: string }) {
-  const thumbnail = BUCKET_URL + props.img + ".JPG";
+  const thumbnail = BUCKET_URL + props.cat + props.img.slice(3) + ".JPG";
   console.log(thumbnail);
   return (
     <div className={styles.itemContainer}>
