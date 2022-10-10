@@ -7,47 +7,28 @@ import Layout from "../../components/layout";
 import { DefaultQueryCell } from "../utils/DefaultQueryCell";
 
 import ItemThumbnail from "../../components/ItemThumbnail";
-// import patternData from "../../public/data/Craft-Sewing-Patterns.json";
-// import toyData from "../../public/data/TOY.json";
-// import speakersData from "../../public/data/Electric-Audio-Speakers.json";
-// import multiData from "../../public/data/Electric-Device-Multi.json";
-// import phonesData from "../../public/data/Electric-Device-Phones.json";
-// import screensData from "../../public/data/Electric-Device-Screens.json";
-// import keyboardsData from "../../public/data/Electric-Computer-Keyboards.json";
-
-const titleAndCodes: {
-  title: string;
-}[] = [
-  { title: "CSP" },
-  { title: "TOY" },
-  { title: "EAS" },
-  { title: "EDM" },
-  { title: "EDP" },
-  { title: "EDS" },
-  { title: "ECK" },
-];
 
 const Section = () => {
   const thingQuery = trpc.useQuery(["thing.all"]);
-  console.log(thingQuery);
+  const thingCatsQuery = trpc.useQuery(["thing.allCats"]);
+  // console.log(thingCatsQuery.data);
+
   return (
     <DefaultQueryCell
       query={thingQuery}
       success={({ data }) => (
         <>
-          {titleAndCodes.map((title, key) => (
+          {thingCatsQuery.data.map((title, key) => (
             <div key={key}>
-              <h1 key={title.title} className={styles.section}>
-                {title.title}
+              <h1 key={title.id} className={styles.section}>
+                {title.name}
               </h1>
               <div key={key} className={styles.flexContainer}>
-                {data.map((data) => (
-                  <ItemThumbnail
-                    cat={title.title}
-                    key={data.id}
-                    img={data.id}
-                  />
-                ))}
+                {data
+                  .filter((m) => m.id.includes(`${title.id}`))
+                  .map((data) => (
+                    <ItemThumbnail cat={title.id} key={data.id} img={data.id} />
+                  ))}
               </div>
             </div>
           ))}

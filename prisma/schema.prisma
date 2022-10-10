@@ -46,6 +46,11 @@ model Categories {
     subSubSubCat      String
 }
 
+model CatOne {
+    id String @id
+    name String
+}
+
 // Necessary for Next auth
 model Account {
     id                String  @id @default(cuid())

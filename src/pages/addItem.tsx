@@ -4,6 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 import axios from "axios";
 import styles from "./addItem.module.css";
+import { trpc } from "../utils/trpc";
+import { createCatOneInput } from "../schema/catOne.schema";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
 
@@ -15,6 +19,7 @@ const AddItem: NextPage = () => {
     // console.log(e.target.files[0]);
     setFile(e.target.files[0]);
   };
+
   const uploadFile = async () => {
     setUploadingStatus("Uploading the file to AWS S3");
 
@@ -37,6 +42,18 @@ const AddItem: NextPage = () => {
     setFile(null);
   };
 
+  // database Input section
+  const { handleSubmit, register } = useForm<createCatOneInput>();
+  const router = useRouter();
+  const { mutate, error } = trpc.useMutation(["thing.addItem"], {
+    onSuccess: () => {
+      router.push("/");
+    },
+  });
+  function onSubmit(values: createCatOneInput) {
+    mutate(values);
+  }
+
   return (
     <>
       <div className={styles.container}>
@@ -56,6 +73,16 @@ const AddItem: NextPage = () => {
         )}
         {uploadingStatus && <p>{uploadingStatus}</p>}
         {uploadedFile && <img className={styles.image} src={uploadedFile} />}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {error && error.message}
+          <span>Type in the three letter SKU</span>
+          <input type="text" placeholder="SKU" {...register("id")} />
+          <span>Type in the name of the Category</span>
+          <input type="text" placeholder="Name" {...register("name")} />
+          <button type="submit">Submit</button>
+        </form>
+
         <Link href="/">
           <button>HOME</button>
         </Link>
