@@ -5,6 +5,8 @@ import { DefaultQueryCell } from "../../utils/DefaultQueryCell";
 import styles from "../../../components/ItemThumbnail.module.css";
 import Link from "next/link";
 
+const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
+
 export default function ThingPage() {
   const id = useRouter().query.id as string;
   const thingQuery = trpc.useQuery(["thing.byId", { id }]);
@@ -22,10 +24,7 @@ export default function ThingPage() {
           <div className={styles.highlightContainer}>
             <h1>{data.description}</h1>
 
-            <img
-              src={`/images/${data.id.slice(0, 3)}/${data.id}.JPG`}
-              alt={data.description}
-            />
+            <img src={`${BUCKET_URL}${data.id}.JPG`} alt={data.description} />
             <span>{data.manufacturer}</span>
             <p>{data.notes}</p>
             <Link href="/">
