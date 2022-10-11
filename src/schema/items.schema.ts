@@ -22,4 +22,4 @@ export const createItemsOutputSchema = z.object({
   sold: z.boolean(),
 });
 
-export type createItemsInput = z.infer<typeof createItemsSchema>;
+export type createItemsInput = z.TypeOf<typeof createItemsSchema>;

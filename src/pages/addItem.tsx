@@ -5,7 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./addItem.module.css";
 import { trpc } from "../utils/trpc";
-import { createCatOneInput } from "../schema/catOne.schema";
+// import { createCatOneInput } from "../schema/catOne.schema";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { createItemsInput, createItemsSchema } from "../schema/items.schema";
@@ -44,7 +44,7 @@ const AddItem: NextPage = () => {
   };
 
   // database Input section
-  const { handleSubmit, register } = useForm<createItemsInput>();
+  const { register, handleSubmit } = useForm<createItemsInput>();
   const router = useRouter();
   const { mutate, error } = trpc.useMutation(["thing.addWholeItem"], {
     onSuccess: () => {
@@ -52,8 +52,19 @@ const AddItem: NextPage = () => {
     },
   });
   function onSubmit(values: createItemsInput) {
-    console.log(values.description);
-    mutate(values);
+    let saleBool = values.sale === "true";
+    let soldBool = values.sold === "true";
+    console.log(soldBool);
+    mutate({
+      value: parseInt(values.value),
+      condition: values.condition,
+      id: values.id,
+      description: values.description,
+      manufacturer: values.manufacturer,
+      notes: values.notes,
+      sale: saleBool,
+      sold: soldBool,
+    });
   }
 
   return (
@@ -134,19 +145,21 @@ const AddItem: NextPage = () => {
             {...register("sale")}
             value="true"
             required
+            typeof="boolean"
           />
           <span>false</span>
           <input
             type="radio"
             // placeholder="TRUE or FALSE"
             {...register("sale")}
-            value="false"
+            value={"false"}
             required
+            typeof="boolean"
           />
           <input
             placeholder="value ex. 5 don't use $"
             {...register("value")}
-            type="number"
+            typeof="number"
             required
           />
           <span>sold?</span>
@@ -157,14 +170,16 @@ const AddItem: NextPage = () => {
             {...register("sold")}
             value="true"
             required
+            typeof="boolean"
           />
           <span>false</span>
           <input
             type="radio"
             // placeholder="TRUE or FALSE"
             {...register("sold")}
-            value="false"
+            value={"false"}
             required
+            typeof="boolean"
           />
           <button type="submit">Submit</button>
         </form>
