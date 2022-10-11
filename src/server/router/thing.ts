@@ -3,12 +3,13 @@ import { TRPCError } from "@trpc/server";
 import { createRouter } from "./context";
 import { z } from "zod";
 import {
-  createCatOneOutputSchema,
+  // createCatOneOutputSchema,
   createCatOneSchema,
 } from "../../schema/catOne.schema";
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime";
 import { TRPC_ERROR_CODES_BY_KEY } from "@trpc/server/rpc";
 import { trpc } from "../../utils/trpc";
+import { createItemsOutputSchema } from "../../schema/items.schema";
 
 export const thingRouter = createRouter()
   .query("all", {
@@ -35,6 +36,50 @@ export const thingRouter = createRouter()
           },
         });
         return catOne;
+      } catch (e) {
+        if (e instanceof PrismaClientKnownRequestError) {
+          if (e.code === "P2002") {
+            throw new TRPCError({
+              code: "CONFLICT",
+              message: "ID already exists",
+            });
+          }
+        }
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Something went wrong",
+        });
+      }
+    },
+  })
+  .mutation("addWholeItem", {
+    input: createItemsOutputSchema,
+    async resolve({ ctx, input }) {
+      const {
+        id,
+        description,
+        manufacturer,
+        condition,
+        notes,
+        sale,
+        value,
+        sold,
+      } = input;
+
+      try {
+        const items = await ctx.prisma.items.create({
+          data: {
+            id,
+            description,
+            manufacturer,
+            condition,
+            notes,
+            sale,
+            value,
+            sold,
+          },
+        });
+        return items;
       } catch (e) {
         if (e instanceof PrismaClientKnownRequestError) {
           if (e.code === "P2002") {

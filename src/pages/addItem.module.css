@@ -8,3 +8,17 @@
   margin-top: 10vw;
   row-gap: 3vw;
 }
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 2vw;
+}
+.form > button {
+  width: 7vw;
+}
+
+.button {
+  background-color: red;
+  color: white;
+}
