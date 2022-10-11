@@ -5,12 +5,9 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./addItem.module.css";
 import { trpc } from "../utils/trpc";
-// import { createCatOneInput } from "../schema/catOne.schema";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { createItemsInput, createItemsSchema } from "../schema/items.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
+import { createItemsInput } from "../schema/items.schema";
 
 const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
 
@@ -88,19 +85,9 @@ const AddItem: NextPage = () => {
         {uploadedFile && <img className={styles.image} src={uploadedFile} />}
 
         <h3>Enter New Categories Here:</h3>
-        {/* <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-          {error && error.message}
-          <span>Type in the three letter SKU</span>
-          <input type="text" placeholder="SKU" {...register("id")} required />
-          <span>Type in the name of the Category</span>
-          <input
-            type="text"
-            placeholder="Category"
-            {...register("name")}
-            required
-          />
-          <button type="submit">Submit</button>
-        </form> */}
+        <Link href="/addCategory">
+          <button>Add Category</button>
+        </Link>
 
         <h3>Enter Individual Items Here:</h3>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>

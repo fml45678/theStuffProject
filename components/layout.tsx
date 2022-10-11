@@ -46,6 +46,9 @@ export default function Layout({ children }) {
         <Link href="addItem">
           <button>Add an Item</button>
         </Link>
+        <Link href="/addCategory">
+          <button>Add Category</button>
+        </Link>
       </div>
       <div className={styles.container}>{children}</div>
     </div>
