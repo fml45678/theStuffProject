@@ -3,7 +3,6 @@ import Link from "next/link";
 // import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
-// import { array } from "zod";
 
 const Cats = () => {
   const catsQuery = trpc.useQuery(["cat.all"]);
@@ -42,7 +41,7 @@ export default function Layout({ children }) {
         <Cats />
       </header>
       <div className={styles.searchContainer}>
-        <input className={styles.searchBar} placeholder="SEARCH" type="text" />
+        {/* <input className={styles.searchBar} placeholder="SEARCH" type="text" /> */}
         <Link href="addItem">
           <button>Add an Item</button>
         </Link>

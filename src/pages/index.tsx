@@ -7,31 +7,73 @@ import Layout from "../../components/layout";
 import { DefaultQueryCell } from "../utils/DefaultQueryCell";
 
 import ItemThumbnail from "../../components/ItemThumbnail";
+import { useState } from "react";
 
 const Section = () => {
   const thingQuery = trpc.useQuery(["thing.all"]);
   const thingCatsQuery = trpc.useQuery(["thing.allCats"]);
-  // console.log(thingCatsQuery.data);
-
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <DefaultQueryCell
       query={thingQuery}
       success={({ data }) => (
         <>
-          {thingCatsQuery.data.map((title, key) => (
-            <div key={key}>
-              <h1 key={title.id} className={styles.section}>
-                {title.name}
-              </h1>
-              <div key={key} className={styles.flexContainer}>
-                {data
-                  .filter((m) => m.id.includes(`${title.id}`))
-                  .map((data) => (
-                    <ItemThumbnail cat={title.id} key={data.id} img={data.id} />
-                  ))}
+          <div className={styles.searchContainer}>
+            <input
+              className={styles.searchBar}
+              placeholder="SEARCH for Item"
+              type="text"
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
+            />
+          </div>
+          <div className={styles.flexContainer}>
+            {data
+              .filter((val) => {
+                if (searchTerm == "") {
+                  return;
+                } else if (
+                  val.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.description
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase()) ||
+                  val.notes.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  val.manufacturer
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return val;
+                }
+              })
+              .map((val, key) => {
+                return (
+                  <ItemThumbnail
+                    cat={val.id.slice(0, 3)}
+                    key={val.id}
+                    img={val.id}
+                  />
+                );
+              })}
+            {thingCatsQuery.data.map((title, key) => (
+              <div key={key}>
+                <h1 key={title.id} className={styles.section}>
+                  {title.name}
+                </h1>
+                <div key={key} className={styles.flexContainer}>
+                  {data
+                    .filter((m) => m.id.includes(`${title.id}`))
+                    .map((data) => (
+                      <ItemThumbnail
+                        cat={title.id}
+                        key={data.id}
+                        img={data.id}
+                      />
+                    ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </>
       )}
     />

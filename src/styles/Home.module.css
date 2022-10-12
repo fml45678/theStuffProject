@@ -12,3 +12,18 @@
   margin-bottom: 2.083vw;
   margin-top: 4.115vw;
 }
+.searchContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+}
+.searchBar {
+  width: 21.354vw;
+  height: 2.604vw;
+  border-radius: 1.302vw;
+  border-style: none;
+  font-size: 1.042vw;
+  text-align: center;
+  letter-spacing: 0.063vw;
+}
