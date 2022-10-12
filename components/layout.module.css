@@ -64,3 +64,8 @@
 .subMenu > li:hover {
   background-color: rgb(233, 48, 205);
 }
+.buttons {
+  border-radius: 2vw;
+  padding: 1vw;
+  border-style: double;
+}

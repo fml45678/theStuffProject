@@ -42,10 +42,10 @@ export default function Layout() {
       </header>
       <div className={styles.searchContainer}>
         <Link href="addItem">
-          <button>Add an Item</button>
+          <button className={styles.buttons}>Add an Item</button>
         </Link>
         <Link href="/addCategory">
-          <button>Add Category</button>
+          <button className={styles.buttons}>Add Category</button>
         </Link>
       </div>
     </div>
