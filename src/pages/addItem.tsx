@@ -21,7 +21,7 @@ const AddItem: NextPage = () => {
   };
 
   const uploadFile = async () => {
-    setUploadingStatus("Uploading the file to AWS S3");
+    setUploadingStatus("Uploading the file");
 
     let { data } = await axios.post("/api/s3/uploadFile", {
       name: file.name,
@@ -124,50 +124,54 @@ const AddItem: NextPage = () => {
             {...register("notes")}
             required
           />
-          <span>for sale</span>
-          <span>true</span>
-          <input
-            type="radio"
-            // placeholder="TRUE or FALSE"
-            {...register("sale")}
-            value="true"
-            required
-            typeof="boolean"
-          />
-          <span>false</span>
-          <input
-            type="radio"
-            // placeholder="TRUE or FALSE"
-            {...register("sale")}
-            value={"false"}
-            required
-            typeof="boolean"
-          />
+          <span>For Sale</span>
+          <div className={styles.bool}>
+            <span>true</span>
+            <input
+              type="radio"
+              {...register("sale")}
+              value="true"
+              required
+              typeof="boolean"
+            />
+          </div>
+          <div className={styles.bool}>
+            <span>false</span>
+            <input
+              type="radio"
+              {...register("sale")}
+              value={"false"}
+              required
+              typeof="boolean"
+            />
+          </div>
           <input
             placeholder="value ex. 5 don't use $"
             {...register("value")}
             typeof="number"
             required
           />
-          <span>sold?</span>
-          <span>true</span>
-          <input
-            type="radio"
-            // placeholder="TRUE or FALSE"
-            {...register("sold")}
-            value="true"
-            required
-            typeof="boolean"
-          />
-          <span>false</span>
-          <input
-            type="radio"
-            // placeholder="TRUE or FALSE"
-            {...register("sold")}
-            value={"false"}
-            required
-            typeof="boolean"
-          />
+          <span>Sold?</span>
+          <div className={styles.bool}>
+            <span>true</span>
+            <input
+              type="radio"
+              {...register("sold")}
+              value="true"
+              required
+              typeof="boolean"
+            />
+          </div>
+          <div className={styles.bool}>
+            <span>false</span>
+            <input
+              type="radio"
+              {...register("sold")}
+              value={"false"}
+              required
+              typeof="boolean"
+            />
+          </div>
           <button type="submit">Submit</button>
         </form>
 

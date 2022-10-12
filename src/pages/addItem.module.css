@@ -15,7 +15,12 @@
   row-gap: 2vw;
 }
 .form > button {
-  width: 7vw;
+  /* width: 7vw; */
+}
+
+.bool {
+  display: flex;
+  column-gap: 2vw;
 }
 
 .button {
