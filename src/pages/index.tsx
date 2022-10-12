@@ -46,7 +46,7 @@ const Section = () => {
                   return val;
                 }
               })
-              .map((val, key) => {
+              .map((val) => {
                 return (
                   <ItemThumbnail
                     cat={val.id.slice(0, 3)}
@@ -55,24 +55,29 @@ const Section = () => {
                   />
                 );
               })}
-            {thingCatsQuery.data.map((title, key) => (
-              <div key={key}>
-                <h1 key={title.id} className={styles.section}>
-                  {title.name}
-                </h1>
-                <div key={key} className={styles.flexContainer}>
-                  {data
-                    .filter((m) => m.id.includes(`${title.id}`))
-                    .map((data) => (
-                      <ItemThumbnail
-                        cat={title.id}
-                        key={data.id}
-                        img={data.id}
-                      />
-                    ))}
+
+            {
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              thingCatsQuery.data.map((title, key) => (
+                <div key={key}>
+                  <h1 key={title.id} className={styles.section}>
+                    {title.name}
+                  </h1>
+                  <div key={key} className={styles.flexContainer}>
+                    {data
+                      .filter((m) => m.id.includes(`${title.id}`))
+                      .map((data) => (
+                        <ItemThumbnail
+                          cat={title.id}
+                          key={data.id}
+                          img={data.id}
+                        />
+                      ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))
+            }
           </div>
         </>
       )}
@@ -98,18 +103,18 @@ const Home: NextPage = () => {
   // ));
 
   return (
-    <Layout>
-      <div>
-        <Head>
-          <title>The Stuff Project</title>
-          <meta name="description" content="A place for all of our stuff!" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+    <div>
+      <Head>
+        <title>The Stuff Project</title>
+        <meta name="description" content="A place for all of our stuff!" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-        <Section />
-        {/* <div>{section}</div> */}
+      <Layout />
+      <Section />
+      {/* <div>{section}</div> */}
 
-        {/* <div>
+      {/* <div>
               {!session && (
                 <Link href="/api/auth/signin">
                   <a>Sign In</a>
@@ -124,8 +129,7 @@ const Home: NextPage = () => {
                 </>
               )}
             </div> */}
-      </div>
-    </Layout>
+    </div>
   );
 };
 

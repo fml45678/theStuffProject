@@ -30,7 +30,7 @@ const Cats = () => {
   );
 };
 
-export default function Layout({ children }) {
+export default function Layout() {
   return (
     <div>
       <header className={styles.flexHeader}>
@@ -41,7 +41,6 @@ export default function Layout({ children }) {
         <Cats />
       </header>
       <div className={styles.searchContainer}>
-        {/* <input className={styles.searchBar} placeholder="SEARCH" type="text" /> */}
         <Link href="addItem">
           <button>Add an Item</button>
         </Link>
@@ -49,7 +48,6 @@ export default function Layout({ children }) {
           <button>Add Category</button>
         </Link>
       </div>
-      <div className={styles.container}>{children}</div>
     </div>
   );
 }

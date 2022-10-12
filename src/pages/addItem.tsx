@@ -16,20 +16,20 @@ const AddItem: NextPage = () => {
   const [file, setFile] = useState<any>();
   const [uploadingStatus, setUploadingStatus] = useState<any>();
   const [uploadedFile, setUploadedFile] = useState<any>();
-  const selectFile = (e) => {
+  const selectFile = (e: any) => {
     setFile(e.target.files[0]);
   };
 
   const uploadFile = async () => {
     setUploadingStatus("Uploading the file");
 
-    let { data } = await axios.post("/api/s3/uploadFile", {
+    const { data } = await axios.post("/api/s3/uploadFile", {
       name: file.name,
       type: file.type,
     });
 
     const url = data.url;
-    let { data: newData } = await axios.put(url, file, {
+    const { data: newData } = await axios.put(url, file, {
       headers: {
         "Content-type": file.type,
         "Access-Control-Allow-Origin": "*",
@@ -49,11 +49,18 @@ const AddItem: NextPage = () => {
     },
   });
   function onSubmit(values: createItemsInput) {
-    let saleBool = values.sale === "true";
-    let soldBool = values.sold === "true";
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const saleBool = values.sale === "true";
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const soldBool = values.sold === "true";
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const number = parseInt(values.value);
     console.log(soldBool);
     mutate({
-      value: parseInt(values.value),
+      value: number,
       condition: values.condition,
       id: values.id,
       description: values.description,
