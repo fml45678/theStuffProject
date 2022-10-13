@@ -3,6 +3,7 @@ import Link from "next/link";
 // import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
+import { signIn } from "next-auth/react";
 
 const Cats = () => {
   const catsQuery = trpc.useQuery(["cat.all"]);
@@ -40,6 +41,7 @@ export default function Layout() {
 
         <Cats />
       </header>
+      <button onClick={() => signIn()}>Sign In</button>
       <div className={styles.searchContainer}>
         <Link href="addItem">
           <button className={styles.buttons}>Add an Item</button>
