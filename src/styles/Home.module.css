@@ -2,8 +2,8 @@
   display: flex;
   gap: 2.083vw 4.688vw;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  margin-left: 9.131vw;
+  justify-content: center;
+  margin-bottom: 5vw;
 }
 
 .section {
@@ -30,9 +30,6 @@
 
 @media screen and (max-width: 600px) {
   .flexContainer {
-    /* flex-direction: column; */
-    justify-content: center;
-    margin-left: unset;
     gap: 6vw 3vw;
   }
   .section {

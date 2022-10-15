@@ -69,3 +69,16 @@
   padding: 1vw;
   border-style: double;
 }
+.signInContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+.signIn {
+  background-color: rgb(191, 53, 53);
+  color: rgb(221, 208, 208);
+  border-radius: 2vw;
+  border: none;
+  font-size: 1.6vw;
+  font-weight: 700;
+  margin: 2vw 3vw 0 0;
+}

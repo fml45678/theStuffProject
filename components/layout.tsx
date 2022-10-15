@@ -41,7 +41,11 @@ export default function Layout() {
 
         <Cats />
       </header>
-      <button onClick={() => signIn()}>Sign In</button>
+      <div className={styles.signInContainer}>
+        <button className={styles.signIn} onClick={() => signIn()}>
+          Sign In
+        </button>
+      </div>
       <div className={styles.searchContainer}>
         <Link href="addItem">
           <button className={styles.buttons}>Add an Item</button>
