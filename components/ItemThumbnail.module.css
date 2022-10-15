@@ -21,3 +21,15 @@
 .highlightContainer > img {
   width: 46.667vw;
 }
+
+@media screen and (max-width: 600px) {
+  .itemContainer {
+    width: 40vw;
+    height: unset;
+    border: none;
+  }
+  .img {
+    width: 40vw;
+    height: unset;
+  }
+}

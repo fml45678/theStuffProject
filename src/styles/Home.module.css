@@ -27,3 +27,20 @@
   text-align: center;
   letter-spacing: 0.063vw;
 }
+
+@media screen and (max-width: 600px) {
+  .flexContainer {
+    /* flex-direction: column; */
+    justify-content: center;
+    margin-left: unset;
+    gap: 6vw 3vw;
+  }
+  .section {
+    font-size: 4vw;
+  }
+  .searchBar {
+    font-size: 18px;
+    width: unset;
+    height: 24px;
+  }
+}
