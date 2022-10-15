@@ -3,7 +3,7 @@ import Link from "next/link";
 // import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
-import { signIn } from "next-auth/react";
+import { signIn, signOut, useSession } from "next-auth/react";
 
 const Cats = () => {
   const catsQuery = trpc.useQuery(["cat.all"]);
@@ -32,6 +32,8 @@ const Cats = () => {
 };
 
 export default function Layout() {
+  const { data: session, status } = useSession();
+
   return (
     <div>
       <header className={styles.flexHeader}>
@@ -42,9 +44,18 @@ export default function Layout() {
         <Cats />
       </header>
       <div className={styles.signInContainer}>
-        <button className={styles.signIn} onClick={() => signIn()}>
-          Sign In
-        </button>
+        {session ? (
+          <div>
+            <p className={styles.greeting}>hi {session.user?.name}</p>
+            <button className={styles.signIn} onClick={() => signOut()}>
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <button className={styles.signIn} onClick={() => signIn()}>
+            Sign In
+          </button>
+        )}
       </div>
       <div className={styles.searchContainer}>
         <Link href="addItem">
