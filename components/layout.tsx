@@ -1,6 +1,5 @@
 import styles from "./layout.module.css";
 import Link from "next/link";
-// import { useRouter } from "next/router";
 import { trpc } from "../src/utils/trpc";
 import { DefaultQueryCell } from "../src/utils/DefaultQueryCell";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -32,7 +31,7 @@ const Cats = () => {
 };
 
 export default function Layout() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
 
   return (
     <div>
@@ -58,12 +57,18 @@ export default function Layout() {
         )}
       </div>
       <div className={styles.searchContainer}>
-        <Link href="addItem">
-          <button className={styles.buttons}>Add an Item</button>
-        </Link>
-        <Link href="/addCategory">
-          <button className={styles.buttons}>Add Category</button>
-        </Link>
+        {session ? (
+          <>
+            <Link href="addItem">
+              <button className={styles.buttons}>Add an Item</button>
+            </Link>
+            <Link href="/addCategory">
+              <button className={styles.buttons}>Add Category</button>
+            </Link>
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

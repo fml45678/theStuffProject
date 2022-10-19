@@ -1,13 +1,13 @@
 import type { NextPage } from "next";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { trpc } from "../utils/trpc";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Layout from "../../components/layout";
 import { DefaultQueryCell } from "../utils/DefaultQueryCell";
-
 import ItemThumbnail from "../../components/ItemThumbnail";
 import { useState } from "react";
+// import next from "next";
 
 const Section = () => {
   const thingQuery = trpc.useQuery(["thing.all"]);
@@ -86,21 +86,7 @@ const Section = () => {
 };
 
 const Home: NextPage = () => {
-  // use this to make dynamic sessions based on if the user is logged in or not.
-  // const { data: session } = useSession();
-
-  // const section = titleAndCodes.map((title, key) => (
-  //   <div key={key}>
-  //     <h1 key={title.code} className={styles.section}>
-  //       {title.title}
-  //     </h1>
-  //     <div key={key} className={styles.flexContainer}>
-  //       {title.file.map((data) => (
-  //         <ItemThumbnail cat={data.SKU} key={data.SKU} img={data.SKU} />
-  //       ))}
-  //     </div>
-  //   </div>
-  // ));
+  const { data: session } = useSession();
 
   return (
     <div>
@@ -109,26 +95,22 @@ const Home: NextPage = () => {
         <meta name="description" content="A place for all of our stuff!" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <Layout />
-      <Section />
-      {/* <div>{section}</div> */}
-
-      {/* <div>
-              {!session && (
-                <Link href="/api/auth/signin">
-                  <a>Sign In</a>
-                </Link>
-              )}
-              {session && (
-                <>
-                  <span>welcome</span>
-                  <Link href="/api/auth/signout">
-                    <a>Sign Out</a>
-                  </Link>
-                </>
-              )}
-            </div> */}
+      <div>
+        {!session && (
+          <div className={styles.welcomeMessage}>
+            <span>Welcome to The Stuff Project!</span>
+            <span>
+              To get started Sign in with your Discord or GitHub account
+            </span>
+          </div>
+        )}
+        {session && (
+          <>
+            <Section />
+          </>
+        )}
+      </div>
     </div>
   );
 };
