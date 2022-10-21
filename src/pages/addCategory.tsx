@@ -8,6 +8,7 @@ import { trpc } from "../utils/trpc";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { createCatOneInput } from "../schema/catOne.schema";
+import Layout from "../../components/layout";
 
 const AddCategory: NextPage = () => {
   // database Input section
@@ -24,6 +25,7 @@ const AddCategory: NextPage = () => {
 
   return (
     <>
+      <Layout />
       <div className={styles.container}>
         <Head>
           <title>Add a Category to The Stuff Project</title>

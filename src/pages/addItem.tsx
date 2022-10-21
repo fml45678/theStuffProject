@@ -8,6 +8,7 @@ import { trpc } from "../utils/trpc";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import { createItemsInput } from "../schema/items.schema";
+import Layout from "../../components/layout";
 
 const BUCKET_URL = "https://stuffprojectitems.s3.amazonaws.com/";
 
@@ -45,7 +46,7 @@ const AddItem: NextPage = () => {
   const router = useRouter();
   const { mutate, error } = trpc.useMutation(["thing.addWholeItem"], {
     onSuccess: () => {
-      router.push("/");
+      router.push("/addItem");
     },
   });
   function onSubmit(values: createItemsInput) {
@@ -73,6 +74,7 @@ const AddItem: NextPage = () => {
 
   return (
     <>
+      <Layout />
       <div className={styles.container}>
         <Head>
           <title>Add an item to The Stuff Project</title>
