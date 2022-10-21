@@ -23,6 +23,7 @@
   font-size: 1.875vw;
   letter-spacing: 0.056vw;
   font-weight: bold;
+  cursor: pointer;
 }
 .searchContainer {
   display: flex;

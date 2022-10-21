@@ -36,9 +36,11 @@ export default function Layout() {
   return (
     <div>
       <header className={styles.flexHeader}>
-        <span className={styles.title}>
-          LEMIEUX STUDIOS <br /> INVENTORY
-        </span>
+        <Link href="/">
+          <span className={styles.title}>
+            LEMIEUX STUDIOS <br /> INVENTORY
+          </span>
+        </Link>
 
         <Cats />
       </header>
