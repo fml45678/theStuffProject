@@ -30,6 +30,7 @@ export default function ThingPage() {
               <img src={`${BUCKET_URL}${data.id}.JPG`} alt={data.description} />
               <span>{data.manufacturer}</span>
               <p>{data.notes}</p>
+              <p>Value: ${data.value}.00</p>
               <Link href="/">
                 <button>HOME</button>
               </Link>

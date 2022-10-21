@@ -41,7 +41,6 @@ export default function Layout() {
             LEMIEUX STUDIOS <br /> INVENTORY
           </span>
         </Link>
-
         <Cats />
       </header>
       <div className={styles.signInContainer}>
@@ -61,7 +60,7 @@ export default function Layout() {
       <div className={styles.searchContainer}>
         {session ? (
           <>
-            <Link href="addItem">
+            <Link href="/addItem">
               <button className={styles.buttons}>Add an Item</button>
             </Link>
             <Link href="/addCategory">
